@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Configuration">
+    <PlatformToolset>v142</PlatformToolset>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{00E5DF9E-42EA-4454-ADE3-2691AFA930AB}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>blowfish</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  <Import Project="..\..\win32\hexchat.props" />
+  <PropertyGroup>
+    <TargetName>hcfishlim</TargetName>
+    <OutDir>$(HexChatRel)plugins\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;FISHLIM_EXPORTS;HAVE_DH_SET0_PQG;HAVE_DH_GET0_KEY;HAVE_DH_SET0_KEY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(DepsRoot)\include;$(Glib);..\..\src\common;$(HexChatLib);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <ModuleDefinitionFile>fishlim.def</ModuleDefinitionFile>
+      <AdditionalLibraryDirectories>$(DepsRoot)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>$(DepLibs);%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;_WIN64;_AMD64_;NDEBUG;_WINDOWS;_USRDLL;FISHLIM_EXPORTS;HAVE_DH_SET0_PQG;HAVE_DH_GET0_KEY;HAVE_DH_SET0_KEY;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(DepsRoot)\include;$(Glib);..\..\src\common;$(HexChatLib);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <ModuleDefinitionFile>blowfish.def</ModuleDefinitionFile>
+      <AdditionalLibraryDirectories>$(DepsRoot)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>$(DepLibs);%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="blowfish.def" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="blowfish.h" />
+    <ClInclude Include="blowfish_cbc.h" />
+    <ClInclude Include="dh1080.h" />
+    <ClInclude Include="keymanagement.h" />
+    <ClInclude Include="ircmessage.h" />
+    <ClInclude Include="plugin_hexchat.h" />
+    <ClInclude Include="utils.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="blowfish_cbc.cpp" />
+    <ClCompile Include="blowfish.cpp" />
+    <ClCompile Include="dh1080.cpp" />
+    <ClCompile Include="keymanagement.cpp" />
+    <ClCompile Include="ircmessage.cpp" />
+    <ClCompile Include="plugin_hexchat.cpp" />
+    <ClCompile Include="utils.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+</Project>
