@@ -5,6 +5,7 @@
 const int ERR_BUF_SIZE = 256;
 
 namespace util {
+	bool caseInsensitiveCompare(const std::string& str1, const std::string& str2);
 	std::vector<std::string> split(const std::string&, const std::string&);
 	void remove_bad_chars(std::string&);
 	std::string Base64_Encode(const std::string&);

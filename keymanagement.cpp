@@ -1,5 +1,6 @@
 #include "keymanagement.h"
 #include "blowfish_cbc.h"
+#include "utils.h"
 
 
 KeyManagement::KeyManagement(const std::string& conf, const std::string& pass) :
@@ -131,7 +132,10 @@ std::string KeyManagement::keystoreGetKey(const std::string& network, const std:
 		std::lock_guard<std::mutex> lock(mutex);
 		std::string escapedNick = escapeNickname(nick);
 
-		auto it = keystore.find(escapedNick);
+		auto it = std::find_if(keystore.begin(), keystore.end(),
+			[&](const auto& pair) {
+				return util::caseInsensitiveCompare(pair.first, escapedNick);
+			});
 		if (it != keystore.end()) {
 			auto value = it->second;
 			auto keyPos = value.find("key=");

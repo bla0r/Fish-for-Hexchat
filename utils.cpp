@@ -4,6 +4,13 @@
 #include <openssl/buffer.h>
 
 namespace util {
+	bool caseInsensitiveCompare(const std::string& str1, const std::string& str2) {
+		return std::equal(str1.begin(), str1.end(), str2.begin(), str2.end(),
+			[](char c1, char c2) {
+				return std::tolower(c1) == std::tolower(c2);
+			});
+	}
+
 	std::vector<std::string> split(const std::string& str, const std::string& delim) {
 		std::vector<std::string> v;
 		if (delim.empty() || str.empty()) {
