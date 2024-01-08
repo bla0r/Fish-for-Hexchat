@@ -9,10 +9,43 @@ This is the FiSH encryption plugin for HexChat, providing encryption support for
 - Key Management: Set, delete, and view encryption keys for channels or individual users.
 - Diffie-Hellman Key Exchange: Perform key exchanges to establish secure communication channels.
 
-## Installation
-1. Compile the plugin using the provided source code.
-2. Place the compiled binary (`blowfish.so` or `blowfish.dll`) in the HexChat plugins directory.
-3. Load the plugin using the HexChat command `/load blowfish`.
+## Dependencies
+- **gio**
+
+- **openssl**
+
+- **hexchat**
+
+- **meson**
+
+### Windows - Visual Studio
+
+1. Clone or download the repository.
+2. Open the project in Visual Studio.
+3. Build the solution.
+4. Copy the compiled DLL file (e.g., `Blowfish.dll`) to the HexChat plugins folder (usually located in the HexChat installation directory).
+
+## Meson User Install
+
+For local installation, follow these steps:
+
+```bash
+meson builddir -Dlocal_install=true
+ninja -C builddir test
+ninja -C builddir install
+```
+## Meson System Install
+
+For system-wide installation, use the following commands:
+
+```bash
+meson builddir
+ninja -C builddir
+ninja -C builddir test
+sudo ninja -C builddir install
+```
+
+These commands assume you have Meson and Ninja installed on your system. Adjust the options according to your project's requirements.
 
 ## Commands
 - `/SETKEY [<nick or #channel>] [<mode>:]<password>`: Set the encryption key for a channel or user. Modes: ECB, CBC.
