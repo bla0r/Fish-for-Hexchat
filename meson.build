@@ -2,7 +2,7 @@ project('blowfish', 'cpp',
   version: '1.0.0',
   meson_version: '>= 0.40.0',
   default_options: [
-    '-std=c++14',
+    'cpp_std=c++14',
     'buildtype=debugoptimized',
     'warning_level=1',
   ]
@@ -48,20 +48,6 @@ blowfish_sources = [
   'keymanagement.cpp',
   'plugin_hexchat.cpp'
 ]
-
-if get_option('local_install')
-  message('Using local install')
-  # Replace this with check: true in 0.47+
-  ret = run_command([find_program('hexchat'), '--configdir'])
-  if ret.returncode() != 0
-    error('Failed to get hexchat configdir')
-  endif
-  hexchatplugindir = join_paths(ret.stdout().strip(), 'addons')
-else
-  message('Using global install')
-  hexchatplugindir = hexchat_dep.get_pkgconfig_variable('hexchatlibdir')
-endif
-message('Install location: ' + hexchatplugindir)
 
 shared_module('blowfish', blowfish_sources,
   dependencies: [libgio_dep, libssl_dep],
