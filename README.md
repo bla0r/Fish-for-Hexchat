@@ -30,8 +30,7 @@ This is the FiSH encryption plugin for HexChat, providing encryption support for
 For local installation, follow these steps:
 
 ```bash
-meson builddir -Dlocal_install=true
-ninja -C builddir test
+meson builddir
 ninja -C builddir install
 ```
 ## Meson System Install
@@ -41,7 +40,6 @@ For system-wide installation, use the following commands:
 ```bash
 meson builddir
 ninja -C builddir
-ninja -C builddir test
 sudo ninja -C builddir install
 ```
 
