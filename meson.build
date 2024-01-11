@@ -53,6 +53,5 @@ shared_module('blowfish', blowfish_sources,
   dependencies: [libgio_dep, libssl_dep],
   include_directories: config_h_include,
   install: true,
-  install_dir: hexchatplugindir,
-  name_prefix: '',
+  name_prefix: ''
 )
