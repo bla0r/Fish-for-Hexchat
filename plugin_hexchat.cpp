@@ -186,7 +186,7 @@ int handle_incoming(char* word[], char* word_eol[], hexchat_event_attrs* attrs, 
 			decrypted = l_message + "=[FiSH: DECRYPTION FAILED!]=";
 			break;
 		case 1:
-			decrypted = "\x02&\x02";
+			decrypted += "\x02&\x02";
 		case 0:
 			//we put here the marker if we want to...
 			if (modus == 1)
