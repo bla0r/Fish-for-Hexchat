@@ -12,6 +12,8 @@
 #include "blowfish_cbc.h"
 #include "dh1080.h"
 #include "utils.h"
+#include <cstring>
+#include <memory>
 
 KeyManagement* keymgm;
 
