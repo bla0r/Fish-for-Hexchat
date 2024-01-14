@@ -2,7 +2,8 @@
 #include "utils.h"
 #include <openssl/blowfish.h>
 #include <string>
-
+#include <cstring>
+#include <memory>
 
 union bf_data {
 	struct {
