@@ -1,4 +1,4 @@
-#include "IrcMessage.h"
+#include "ircmessage.h"
 #include "utils.h"
 #include <iostream>
 #include <sstream>

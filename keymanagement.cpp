@@ -1,7 +1,7 @@
 #include "keymanagement.h"
 #include "blowfish_cbc.h"
 #include "utils.h"
-
+#include <algorithm>
 
 KeyManagement::KeyManagement(const std::string& conf, const std::string& pass) :
 	conffile(conf),

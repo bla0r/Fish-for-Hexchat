@@ -4,6 +4,7 @@
 #include <openssl/rand.h>
 #include <openssl/err.h>
 #include <mutex>
+#include <cstring>
 
 static bool _blowfish_cipher_walk(EVP_CIPHER_CTX* a_ctx, const char* a_bufIn, size_t a_inSize, std::string& ar_out)
 {
